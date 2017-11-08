@@ -1,0 +1,148 @@
+Basic shells:
+_____________
+
+$:    Shell Prompt:
+_           Shell Expects commands
+
+[]:   Arguments
+––
+
+echo:   Writes input text to output
+____
+    echo Julio      Writes "Julio" on std-output
+
+ Redirections:
+  [command] > [file]: Change the output of command to the file. Overwrites!
+  ==================
+                     echo Julio > ReadMe.txt     Writes "Julio" and > redirects to ReadMe.txt
+                     
+                     
+                     
+  [command] < [file]: Change the input of command to the file
+  ================== 
+                      wc < ReadMe.txt       Reads the number of words from file
+                      
+                      
+                      
+  [command] >> [file]: Append the output of command to the file, add at the end
+  ===================
+                      echo Julio >> ReadMe.txt
+                      
+                      
+  [command] | [command]: Pipe command. Takes output of left command as input of right command.
+  =====================
+    
+cat:    Reads file and displays in the output
+___
+        cat ReadMe.txt                    Now it would say "Julio" on terminal (std-output)
+        cat ReadMe.txt > WriteMe.txt      Now it would write from ReadMe.txt to WriteMe.txt 
+        
+        
+ls:
+__    List command    Lists the content of a folder   
+  ls        Lists current folder
+  
+  ls -a     Show hidden directories and files which start with "."
+  ls -l     Long listing: Access Permissions, last modified dete
+  ls -t     Time sort by last modified
+  ls -alt   The three previous ones
+  ls -al
+  ls -at
+  ls -lt    
+  ls -tl 
+  ....      Should be obvious
+  
+  ls ReadMe.txt     Checks if ReadMe.txt exists /error message
+  ls *.txt          Checks all files with that extension
+  
+  
+pwd:    Print Working Directory
+___
+    pwd     Prints path of current directory
+    
+    
+    
+cd:     Change Directory
+__
+  cd Downloads        Will take you from /Users/user to /Users/user/Downloads , for example
+  cd ..               Will tke you up to father directory, back to /Users/user in the example
+  
+  
+  
+mkdir:      Make Directory, build directory in current folder
+_____
+     mkdir Secrets    Will build the folder Secrets in current directory
+     mkdir .secret    Makes a hidden directory: .secret
+     
+     
+     
+touch:      Make a file 
+_____
+     touch ReadMe.txt       Creates the file ReadMe.txt in the current directory
+
+
+cp:     Copy 
+__
+   cp [file] [path]           Copies a file into that path
+   cp ReadMe.txt .secret      Copies ReadMe into .secret, a hidden directory
+   cp ReadMe.txt WriteMe.txt  Overwrites a destination file
+   
+   
+mv:     Move!
+__  
+   mv [file] [destination]        Moves file to that path
+   mv ReadMe.txt ../readme.txt    Moves ReadMe.txt to father directory
+   mv ReadMe.txt Dir/             Moves ReadMe.txt to Dir
+
+rm:   Remove
+--
+  rm -rf  removes present directory and ALL THE FILES
+
+rmdir: Removes EMPTY Directory
+_____
+      rmdir [Directory]
+      
+      
+      
+wc:     Word Count
+__
+  wc [file]       Counts lines words and characters (in that order) in file
+  wc ReadMe.txt   Counts words in file
+  wc -l ReadMe.txt   Counts lines in file
+  wc -w ReadMe.txt   Counts words in file 
+  wc -c ReadMe.txt   Counts words in file
+  
+  wc -l ReadMe.txt > Word_Count.txt     Reads the number of lines and stores in Word_Count.txt
+      
+      
+Permission Settings:
+           whoami: Returns user name
+           ======
+           Classes of permission
+                  directory?: 1  
+                  ¬¬¬¬¬¬¬¬¬¬
+                  User: 2,3,4
+                  ¬¬¬¬
+                  Group: 5,6,7
+                  ¬¬¬¬¬
+                  others: 8,9,10
+                  ¬¬¬¬¬¬
+           See permissions with ls -l :    -rwxr--r--
+                  d: directory
+                  r: read
+                  w: write
+                  x: execute
+                
+    Change permissions:
+        chmod g+w ReadMe.txt      Adds writting permission to group
+        chmod g-w ReadMe.txt      Removes writting permission to group
+           
+           
+           
+           
+           
+           
+           
+        
+      
+      
