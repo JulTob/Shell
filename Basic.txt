@@ -1,3 +1,11 @@
+Grafic Interface Unix: X Window   [Ctrl+Alt+F7]
+Terminals:  Ctrl+Alt+F1 to F6  goes to terminal Fx
+exit: EOF / Ctrl+D
+
+SHEL
+    Interpreter
+    Comands are little programs
+
 Basic shells:
 _____________
 
@@ -6,6 +14,11 @@ _           Shell Expects commands
 
 []:   Arguments
 ––
+man:    Manual about the shell call
+____
+            man echo        Tells you about "echo"
+            man 2 echo      Tells you more actualized about echo
+            apropos: search in manual
 
 echo:   Writes input text to output
 ____
@@ -136,8 +149,12 @@ Permission Settings:
     Change permissions:
         chmod g+w ReadMe.txt      Adds writting permission to group
         chmod g-w ReadMe.txt      Removes writting permission to group
-           
-           
+         
+         
+         
+         
+whoami:     Returns the user
+______
            
            
            
