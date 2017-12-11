@@ -14,6 +14,9 @@ _           Shell Expects commands
 
 []:   Arguments
 ––
+;
+_     Separator. Lets you concatenate commands.
+
 man:    Manual about the shell call
 ____
             man echo        Tells you about "echo"
@@ -23,6 +26,7 @@ ____
 echo:   Writes input text to output
 ____
     echo Julio      Writes "Julio" on std-output
+    echo 'Julio'    Writes the String 'Julio' on std-output
 
  Redirections:
   [command] > [file]: Change the output of command to the file. Overwrites!
@@ -53,7 +57,10 @@ ___
         
 ls:
 __    List command    Lists the content of a folder   
-  ls        Lists current folder
+  ls        Lists current folder/directory
+  ls .      Lists current folder/directory
+  ls ~      Lists My Home Directory
+  ls Direct Lists the directory "Direct"
   
   ls -a     Show hidden directories and files which start with "."
   ls -l     Long listing: Access Permissions, last modified dete
@@ -78,8 +85,10 @@ ___
 cd:     Change Directory
 __
   cd Downloads        Will take you from /Users/user to /Users/user/Downloads , for example
-  cd ..               Will tke you up to father directory, back to /Users/user in the example
-  
+  cd Downloads/       Will take you from /Users/user to /Users/user/Downloads , for example
+  cd ..               Will take you up to father directory, back to /Users/user in the example
+  cd                  Will take you to Home directory
+  cd ~                Will take you to Home directory
   
   
 mkdir:      Make Directory, build directory in current folder
@@ -156,8 +165,12 @@ Permission Settings:
 whoami:     Returns the user
 ______
            
-           
-           
+
+Shell Variables
+_______________
+$COLUMNS: The columns size
+$LINES:   The Lines size
+  
            
            
         
