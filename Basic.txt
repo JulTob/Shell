@@ -12,10 +12,16 @@ _____________
 $:    Shell Prompt:
 _           Shell Expects commands
 
-[]:   Arguments
-––
-;
+'single quotes'
+_______________   Literally whats inside the ''
+           cd '..' goes to a directory named ..
+
+[sqbrackets]   Arguments for notes
+____________
+
+;     Semicolon
 _     Separator. Lets you concatenate commands.
+
 
 man:    Manual about the shell call
 ____
@@ -26,7 +32,7 @@ ____
 echo:   Writes input text to output
 ____
     echo Julio      Writes "Julio" on std-output
-    echo 'Julio'    Writes the String 'Julio' on std-output
+    echo 'Julio'    Writes 'Julio' without interpreting on std-output
 
  Redirections:
   [command] > [file]: Change the output of command to the file. Overwrites!
@@ -46,15 +52,25 @@ ____
                       echo Julio >> ReadMe.txt
                       
                       
-  [command] | [command]: Pipe command. Takes output of left command as input of right command.
+  [command] | [command]: PIPE command. Takes output of left command as input of right command.
   =====================
     
-cat:    Reads file and displays in the output
+cat:    Concatenate: Reads file and displays in the output
 ___
         cat ReadMe.txt                    Now it would say "Julio" on terminal (std-output)
         cat ReadMe.txt > WriteMe.txt      Now it would write from ReadMe.txt to WriteMe.txt 
-        
-        
+
+less: 
+_____ Shows less than cat, one screenfull
+      [SpaceBar]:' '         Advances page 
+      [Arrow down]           Advances one line
+        or [s]               Advances one line
+      [Arrow up]             Back one line
+      [b]                    Back a Page
+      [/]                    Search
+      [q]                    Quit
+
+
 ls:
 __    List command    Lists the content of a folder   
   ls        Lists current folder/directory
@@ -63,7 +79,7 @@ __    List command    Lists the content of a folder
   ls Direct Lists the directory "Direct"
   
   ls -a     Show hidden directories and files which start with "."
-  ls -l     Long listing: Access Permissions, last modified dete
+  ls -l     Long listing: Access Permissions, last modified date...
   ls -t     Time sort by last modified
   ls -alt   The three previous ones
   ls -al
@@ -73,7 +89,8 @@ __    List command    Lists the content of a folder
   ....      Should be obvious
   
   ls ReadMe.txt     Checks if ReadMe.txt exists /error message
-  ls *.txt          Checks all files with that extension
+  ls *.txt          Checks all files with that extension (.txt)
+  ls Read*          Checks all files that start with Read
   
   
 pwd:    Print Working Directory
@@ -95,6 +112,7 @@ mkdir:      Make Directory, build directory in current folder
 _____
      mkdir Secrets    Will build the folder Secrets in current directory
      mkdir .secret    Makes a hidden directory: .secret
+     mkdir Documents/Secret    Makes a Secret directory inside Documents
      
      
      
@@ -115,14 +133,22 @@ __
    mv [file] [destination]        Moves file to that path
    mv ReadMe.txt ../readme.txt    Moves ReadMe.txt to father directory
    mv ReadMe.txt Dir/             Moves ReadMe.txt to Dir
+   mv Documents/*.txt Documents/Secret  Moves all txt files to Secret, in Documents
+   mv Secrets/*txt                Moves all the txt files of Secrets to the current directory
+   mv * ..                        Moves ALL files to parent directory
 
 rm:   Remove
---
-  rm -rf  removes present directory and ALL THE FILES
+==
+  rm ReadMe.txt     removes ReadMe.txt (no trash can)
+  rm -i ReadMe.txt  removes interactive
+  rm -rf            removes present directory and ALL THE FILES
+  rm 'ReadMe.txt' 'EatMe.shorts'  removes both files
+  rm *Me.*          removes any file with "Me." in name
+  
 
 rmdir: Removes EMPTY Directory
 _____
-      rmdir [Directory]
+      rmdir [Directory]    
       
       
       
@@ -160,19 +186,70 @@ Permission Settings:
         chmod g-w ReadMe.txt      Removes writting permission to group
          
          
-         
+date:
+_____      Returns the date
          
 whoami:     Returns the user
 ______
-           
 
-Shell Variables
+curl:     C- URL, See URL. 'Downloads' a webpage (sourcecode)
+____
+     curl 'http://google.com'                     Prints sourcecode of the page
+     curl -L 'http://google.com'                  Follow redirects
+     curl -o google.html -L 'http://google.com'   Goes to Google and downloads the sourcecode into the file "google.html"
+     
+grep:    Global Regular Expression Print
+____    Returns the lines of file with certain data pattern (word)
+
+     grep [OPTIONS] PATTERN [FILE...]
+     grep shell 'dictionary.txt'            Returns all the lines with 'shell' at some place (seashell, shellac...)
+     grep shell 'dictionary.txt' | less     Sends the lines to less to read easily
+     curl -L 'http://google.com' | grep go  Searchs lines in Google.com for "go" 
+     grep shell 'dictionary.txt' | wc       How many lines with shell in dictionary? (Word Count)
+     grep -c shell 'dictionary.txt'         How many lines with shell in dictionary? (Count extention)
+     grep --color shell 'dictionary.txt'    colors "shell" in the lines
+     grep -n shell 'dictionary.txt'         line where found
+     grep -i shell 'dictionary.txt'         ignore case sensitivity
+     grep -w shell 'dictionary.txt'         lines WITHOUT pattern
+
+alias
+_____   Renames a command
+
+        alias     shows all aliases
+        alias shellme= 'grep shell 'dictionary.txt''
+        alias ll='ls -la' 
+                          save in .bash_profile to have them permanently
+
+
+
+Shell's Environment Variables
 _______________
-$COLUMNS: The columns size
-$LINES:   The Lines size
-  
-           
-           
-        
+$COLUMNS    The columns size
+$LINES      The Lines size
+$PATH       Where your Program Files are
+            Add a directory to your path:
+            PATH=$PATH:/new/dir/here     Adds the new PATH to search as a Shell's Variable (will be lose when closed)
+$LOGNAME    User's name logged in
+
+
+
+Shell's General Variables
+_________________________
+    
+                  [variablename]=[Value]
+                  $[variablename]           Reference to variable value
+                  numbers='one two three'   Makes a list 
+                  echo $numbers             Prints the list as writen
+                  
       
-      
+Shell Scripts
+_____________  Shell commands as programming language
+# in file .bash_profile
+PATH=$PATH:Users/student/bin
+
+   ...............
+   #In Linux
+   if (-f ~/.bashrc ] ; then
+      source ~/.bashrc
+   fi
+   ...............
