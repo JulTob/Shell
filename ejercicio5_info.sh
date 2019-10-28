@@ -2,16 +2,17 @@
 # Information
 echo "Nombre:"
 whoami
-echo "Directorio de mi cuenta: "
-home
+echo "Directorio de mi cuenta:"
+echo "$HOME"
+
 echo "Directorio actual:"
 pwd
 echo "Fecha: "
 date
 echo "*****************************"
 echo "Variables de entorno"
-echo '$HOME:'"$HOME"
-echo '$PATH:'"$PATH"
-echo '$SHELL:'"$SHELL"
-echo '$USERNAME:'"$USERNAME"
+echo '$HOME: '"$HOME"
+echo '$PATH: '"$PATH"
+echo '$SHELL: '"$SHELL"
+echo '$USERNAME: '"$USERNAME"
 echo "****************************"
