@@ -1,0 +1,4 @@
+#!/bin/sh
+# directory deteailled folders in wd
+# alias foldrs='*****'
+ls -lt | grep ^d
